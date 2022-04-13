@@ -1,0 +1,179 @@
+:root {
+	--board-size: 4;
+	--board-spacing: 2px;
+	--tile_size: 125px;
+	--tile_border: 1px;
+	--image-file: url("images/1.png");
+	--image-size: calc(var(--tile_size) * var(--board-size) + var(--board-spacing) * (var(--board-size) - 1) - var(--tile_border) * 2);
+	--image-offset: calc(var(--tile_size) + var(--board-spacing));
+}
+
+body {
+	background: linear-gradient(to bottom right, lightpink, white, white, white, lightpink);
+	color: black;
+	font-family: 'Arial';
+	position: relative;
+}
+
+.center{
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
+button {
+	font-family: 'Century Gothic';
+	font-weight: bold;
+	float: left;
+	background: transparent;
+	border: var(--tile_border) solid black;
+	width: var(--tile_size);
+	height: var(--tile_size);
+	cursor: pointer;
+	text-align: center;
+	margin: auto;
+	font-size: 32pt;
+	color: black;
+}
+
+button:disabled:hover {
+	cursor: default;
+	color: black;
+	text-decoration: none;
+	border: var(--tile_border) solid black;
+}
+
+button:hover {
+	box-shadow: 0 0 4px 4px red;
+	position: absolute;
+	color: red;
+	text-decoration: underline;
+	border: var(--tile_border) solid white;
+}
+
+button:hover:disabled {
+	box-shadow: none;
+}
+
+input {
+	background-color: lightcoral;
+	border: none;
+	padding: 12px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	cursor: pointer;
+	border-radius: 8px;
+}
+
+input:hover{
+	background-color: lightpink;
+}
+
+#imgselect{
+	width: 600px;
+	margin: auto;
+	margin-bottom: 1em;
+	padding: 10px;
+}
+
+#board {
+	display: table;
+	border-spacing: var(--board-spacing);
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.rows {
+	display: table-row;
+	width: 100%;
+}
+
+.tiles {
+	display: table-cell;
+	width: auto;
+	height: auto;
+	overflow: hidden;
+	background-image: var(--image-file);
+	background-size: calc(var(--image-size));
+}
+
+#tile_0 {
+	background-position-x: var(--tile_border);
+	background-position-y: var(--tile_border);
+}
+
+#tile_1 {
+	background-position-x: calc(var(--image-offset) * -1 + var(--tile_border));
+	background-position-y: var(--tile_border);
+}
+
+#tile_2 {
+	background-position-x: calc(var(--image-offset) * -2 + var(--tile_border));
+	background-position-y: var(--tile_border); 
+}
+
+#tile_3 {
+	background-position-x: calc(var(--image-offset) * -3 + var(--tile_border));
+	background-position-y: var(--tile_border);
+}
+
+#tile_4 {
+	background-position-x: var(--tile_border);
+	background-position-y: calc(var(--image-offset) * -1 + var(--tile_border));
+}
+
+#tile_5 {
+	background-position-x: calc(var(--image-offset) * -1 + var(--tile_border));
+	background-position-y: calc(var(--image-offset) * -1 + var(--tile_border));
+}
+
+#tile_6 {
+	background-position-x: calc(var(--image-offset) * -2 + var(--tile_border));
+	background-position-y: calc(var(--image-offset) * -1 + var(--tile_border));
+}
+
+#tile_7 {
+	background-position-x: calc(var(--image-offset) * -3 + var(--tile_border));
+	background-position-y: calc(var(--image-offset) * -1 + var(--tile_border));
+}
+
+#tile_8 {
+	background-position-x: var(--tile_border);
+	background-position-y: calc(var(--image-offset) * -2 + var(--tile_border));
+}
+
+#tile_9 {
+	background-position-x: calc(var(--image-offset) * -1 + var(--tile_border));
+	background-position-y: calc(var(--image-offset) * -2 + var(--tile_border));
+}
+
+#tile_10 {
+	background-position-x: calc(var(--image-offset) * -2 + var(--tile_border));
+	background-position-y: calc(var(--image-offset) * -2 + var(--tile_border));
+}
+
+#tile_11 {
+	background-position-x: calc(var(--image-offset) * -3 + var(--tile_border));
+	background-position-y: calc(var(--image-offset) * -2 + var(--tile_border));
+}
+
+#tile_12 {
+	background-position-x: var(--tile_border);
+	background-position-y: calc(var(--image-offset) * -3 + var(--tile_border));
+}
+
+#tile_13 {
+	background-position-x: calc(var(--image-offset) * -1 + var(--tile_border));
+	background-position-y: calc(var(--image-offset) * -3 + var(--tile_border));
+}
+
+#tile_14 {
+	background-position-x: calc(var(--image-offset) * -2 + var(--tile_border));
+	background-position-y: calc(var(--image-offset) * -3 + var(--tile_border));
+}
+
+#tile_15 {
+	background-image: none;
+}

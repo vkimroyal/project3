@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Fifteen Puzzle</title>
+        <link rel="stylesheet" href="style.css">
+        <script src="script.js"></script>
+    </head>
+
+    <body onload="setup()">
+
+		<div class="center">
+            <!-- Header -->
+			<h1>Fifteen Puzzle</h1>
+            <p>
+                The goal of the game is to unscramble the tiles by sliding them.<br>
+                Get all the tiles in consecutive order with the blank tile in the bottom right.<br>
+                Can you solve it?
+            </p>
+
+			<!-- Image Selection -->
+			<div id="imgselect">
+                <hr>
+				<h3>Select an image.</h3>
+
+				<img src="images/1.png" onclick="imgSelect('images/1.png')" width="75px">
+				<img src="images/2.png" onclick="imgSelect('images/2.png')" width="75px">
+				<img src="images/3.png" onclick="imgSelect('images/3.png')" width="75px">
+				<img src="images/4.png" onclick="imgSelect('images/4.png')" width="75px">
+				<img src="images/5.png" onclick="imgSelect('images/5.png')" width="75px">
+				<br><br>
+                <hr>
+			</div>
+		</div>
+
+        <!-- Board Layout -->
+		<div id="board">
+
+            <!-- First Row -->
+			<div class="rows" id="row_0">
+				<div class="tiles" id="tile_0">
+					<button onclick="click(0,0)"></button>
+				</div>
+				<div class="tiles" id="tile_1">
+					<button onclick="click(0,1)"></button>
+				</div>
+				<div class="tiles" id="tile_2">
+					<button onclick="click(0,2)"></button>
+				</div>
+				<div class="tiles" id="tile_3">
+					<button onclick="click(0,3)"></button>
+				</div>
+			</div>
+
+            <!-- Second Row -->
+			<div class="rows" id="row_1">
+				<div class="tiles" id="tile_4">
+					<button onclick="click(1,0)"></button>
+				</div>
+				<div class="tiles" id="tile_5">
+					<button onclick="click(1,1)"></button>
+				</div>
+				<div class="tiles" id="tile_6">
+					<button onclick="click(1,2)"></button>
+				</div>
+				<div class="tiles" id="tile_7">
+					<button onclick="click(1,3)"></button>
+				</div>
+			</div>
+
+            <!-- Third Row -->
+			<div class="rows" id="row_2">
+				<div class="tiles" id="tile_8">
+					<button onclick="click(2,0)"></button>
+				</div>
+				<div class="tiles" id="tile_9">
+					<button onclick="click(2,1)"></button>
+				</div>
+				<div class="tiles" id="tile_10">
+					<button onclick="click(2,2)"></button>
+				</div>
+				<div class="tiles" id="tile_11">
+					<button onclick="click(2,3)"></button>
+				</div>
+			</div>
+
+            <!-- Fourth Row -->
+			<div class="rows" id="row_3">
+				<div class="tiles" id="tile_12">
+					<button onclick="click(3,0)"></button>
+				</div>
+				<div class="tiles" id="tile_13">
+					<button onclick="click(3,1)"></button>
+				</div>
+				<div class="tiles" id="tile_14">
+					<button onclick="click(3,2)"></button>
+				</div>
+				<div class="tiles" id="tile_15">
+					<button onclick="click(3,3)" disabled></button>
+				</div>
+			</div>
+
+		</div>
+
+        <br>
+
+        <!-- Shuffle Button -->
+		<div class="center">
+			<input type="button" value="Shuffle" onclick="shuffle()" />
+        </div>
+	</body>
+</html>
