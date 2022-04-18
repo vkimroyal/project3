@@ -1,34 +1,28 @@
 :root {
 	--board-size: 4;
 	--board-spacing: 2px;
-	--tile_size: 125px;
-	--tile_border: 1px;
+	--tile-size: 125px;
+	--tile-border: 1px;
 	--image-file: url("images/1.png");
-	--image-size: calc(var(--tile_size) * var(--board-size) + var(--board-spacing) * (var(--board-size) - 1) - var(--tile_border) * 2);
-	--image-offset: calc(var(--tile_size) + var(--board-spacing));
+	--image-size: calc(var(--tile-size) * var(--board-size) + var(--board-spacing) * (var(--board-size) - 1) - var(--tile-border) * 2);
+	--image-offset: calc(var(--tile-size) + var(--board-spacing));
 }
 
 body {
-	background: linear-gradient(to bottom right, lightpink, white, white, white, lightpink);
-	color: black;
+	background: linear-gradient(to bottom right, skyblue, white, white, white, skyblue);
+	background-attachment: fixed;
+	margin: auto;
 	font-family: 'Arial';
 	position: relative;
 }
 
-.center{
-	margin-left: auto;
-	margin-right: auto;
-	text-align: center;
-}
-
 button {
-	font-family: 'Century Gothic';
 	font-weight: bold;
 	float: left;
 	background: transparent;
-	border: var(--tile_border) solid black;
-	width: var(--tile_size);
-	height: var(--tile_size);
+	border: var(--tile-border) solid black;
+	width: var(--tile-size);
+	height: var(--tile-size);
 	cursor: pointer;
 	text-align: center;
 	margin: auto;
@@ -40,23 +34,29 @@ button:disabled:hover {
 	cursor: default;
 	color: black;
 	text-decoration: none;
-	border: var(--tile_border) solid black;
+	border: var(--tile-border) solid black;
 }
 
 button:hover {
-	box-shadow: 0 0 4px 4px red;
+	box-shadow: 0 0 8px 8px red;
 	position: absolute;
 	color: red;
 	text-decoration: underline;
-	border: var(--tile_border) solid white;
+	border: var(--tile-border) solid red;
 }
 
 button:hover:disabled {
 	box-shadow: none;
 }
 
-input {
-	background-color: lightcoral;
+.center{
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
+input{
+	background-color: skyblue;
 	border: none;
 	padding: 12px;
 	text-align: center;
@@ -65,17 +65,35 @@ input {
 	font-size: 16px;
 	cursor: pointer;
 	border-radius: 8px;
+	transition: 0.3s;
 }
 
-input:hover{
-	background-color: lightpink;
+input:hover, input:focus {
+	background-color: navy;
+	color: white;
 }
 
 #imgselect{
 	width: 600px;
 	margin: auto;
-	margin-bottom: 1em;
-	padding: 10px;
+	animation-duration: 2s;
+	animation-name: slideIn;
+}
+
+@keyframes slideIn {
+	from {
+		margin-right: 100%;
+		width: -300%;
+	} to {
+		margin-right: 0%;
+		width: 100%;
+	}
+}
+
+hr {
+	width: 600px;
+	transition: all 0.4s ease;
+	animation: fadeIn 2s;
 }
 
 #board {
@@ -83,6 +101,12 @@ input:hover{
 	border-spacing: var(--board-spacing);
 	margin-left: auto;
 	margin-right: auto;
+	animation: fadeIn 2s;
+}
+
+@keyframes fadeIn {
+	0% {opacity: 0;}
+	100% {opacity: 1;}
 }
 
 .rows {
@@ -99,81 +123,102 @@ input:hover{
 	background-size: calc(var(--image-size));
 }
 
-#tile_0 {
-	background-position-x: var(--tile_border);
-	background-position-y: var(--tile_border);
+/* Win Screen */
+#win-overlay {
+	position: fixed;
+	display: none;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(0,0,0,0.7);
+	z-index: 2;
+	cursor: pointer;
+	color: white;
+	font-size: 32pt;
+	animation: fadeIn 2s;
 }
 
-#tile_1 {
-	background-position-x: calc(var(--image-offset) * -1 + var(--tile_border));
-	background-position-y: var(--tile_border);
+/* For all tiles */
+
+#tile-0{
+	background-position-x: var(--tile-border);
+	background-position-y: var(--tile-border);
 }
 
-#tile_2 {
-	background-position-x: calc(var(--image-offset) * -2 + var(--tile_border));
-	background-position-y: var(--tile_border); 
+#tile-1{
+	background-position-x: calc(var(--image-offset) * -1 + var(--tile-border));
+	background-position-y: var(--tile-border);
 }
 
-#tile_3 {
-	background-position-x: calc(var(--image-offset) * -3 + var(--tile_border));
-	background-position-y: var(--tile_border);
+#tile-2{
+	background-position-x: calc(var(--image-offset) * -2 + var(--tile-border));
+	background-position-y: var(--tile-border); 
 }
 
-#tile_4 {
-	background-position-x: var(--tile_border);
-	background-position-y: calc(var(--image-offset) * -1 + var(--tile_border));
+#tile-3{
+	background-position-x: calc(var(--image-offset) * -3 + var(--tile-border));
+	background-position-y: var(--tile-border);
 }
 
-#tile_5 {
-	background-position-x: calc(var(--image-offset) * -1 + var(--tile_border));
-	background-position-y: calc(var(--image-offset) * -1 + var(--tile_border));
+#tile-4{
+	background-position-x: var(--tile-border);
+	background-position-y: calc(var(--image-offset) * -1 + var(--tile-border));
 }
 
-#tile_6 {
-	background-position-x: calc(var(--image-offset) * -2 + var(--tile_border));
-	background-position-y: calc(var(--image-offset) * -1 + var(--tile_border));
+#tile-5{
+	background-position-x: calc(var(--image-offset) * -1 + var(--tile-border));
+	background-position-y: calc(var(--image-offset) * -1 + var(--tile-border));
 }
 
-#tile_7 {
-	background-position-x: calc(var(--image-offset) * -3 + var(--tile_border));
-	background-position-y: calc(var(--image-offset) * -1 + var(--tile_border));
+#tile-6{
+	background-position-x: calc(var(--image-offset) * -2 + var(--tile-border));
+	background-position-y: calc(var(--image-offset) * -1 + var(--tile-border));
 }
 
-#tile_8 {
-	background-position-x: var(--tile_border);
-	background-position-y: calc(var(--image-offset) * -2 + var(--tile_border));
+#tile-7{
+	background-position-x: calc(var(--image-offset) * -3 + var(--tile-border));
+	background-position-y: calc(var(--image-offset) * -1 + var(--tile-border));
 }
 
-#tile_9 {
-	background-position-x: calc(var(--image-offset) * -1 + var(--tile_border));
-	background-position-y: calc(var(--image-offset) * -2 + var(--tile_border));
+#tile-8{
+	background-position-x: var(--tile-border);
+	background-position-y: calc(var(--image-offset) * -2 + var(--tile-border));
 }
 
-#tile_10 {
-	background-position-x: calc(var(--image-offset) * -2 + var(--tile_border));
-	background-position-y: calc(var(--image-offset) * -2 + var(--tile_border));
+#tile-9{
+	background-position-x: calc(var(--image-offset) * -1 + var(--tile-border));
+	background-position-y: calc(var(--image-offset) * -2 + var(--tile-border));
 }
 
-#tile_11 {
-	background-position-x: calc(var(--image-offset) * -3 + var(--tile_border));
-	background-position-y: calc(var(--image-offset) * -2 + var(--tile_border));
+#tile-10{
+	background-position-x: calc(var(--image-offset) * -2 + var(--tile-border));
+	background-position-y: calc(var(--image-offset) * -2 + var(--tile-border));
 }
 
-#tile_12 {
-	background-position-x: var(--tile_border);
-	background-position-y: calc(var(--image-offset) * -3 + var(--tile_border));
+#tile-11{
+	background-position-x: calc(var(--image-offset) * -3 + var(--tile-border));
+	background-position-y: calc(var(--image-offset) * -2 + var(--tile-border));
 }
 
-#tile_13 {
-	background-position-x: calc(var(--image-offset) * -1 + var(--tile_border));
-	background-position-y: calc(var(--image-offset) * -3 + var(--tile_border));
+#tile-12{
+	background-position-x: var(--tile-border);
+	background-position-y: calc(var(--image-offset) * -3 + var(--tile-border));
 }
 
-#tile_14 {
-	background-position-x: calc(var(--image-offset) * -2 + var(--tile_border));
-	background-position-y: calc(var(--image-offset) * -3 + var(--tile_border));
+#tile-13{
+	background-position-x: calc(var(--image-offset) * -1 + var(--tile-border));
+	background-position-y: calc(var(--image-offset) * -3 + var(--tile-border));
 }
 
-#tile_15 {
+#tile-14{
+	background-position-x: calc(var(--image-offset) * -2 + var(--tile-border));
+	background-position-y: calc(var(--image-offset) * -3 + var(--tile-border));
+}
+
+#tile-15{
 	background-image: none;
 }
